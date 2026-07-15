@@ -58,78 +58,96 @@ export const skillCategories = [
 
 export const internship = {
   company: '亚信安全科技股份有限公司',
-  role: '通用软件开发工程师',
-  period: '2025.03 — 2025.09',
+  department: 'SOC 安全运营中心',
+  role: '全栈开发实习生',
+  period: '2026.06 — 2026.07',
+  team: '2 人团队 · 全栈业务功能开发',
+  totalLines: '~60,000',
+  background:
+    'SOC（安全运营中心）为 TrustOne、TDA、DS、AIXDR 四类安全产品提供告警与安全事件的统一运维平台。核心链路：多源告警接入 → Kafka Streams 两阶段范式化+聚合 → OpenSearch 存储 → 安全事件规则引擎匹配 → AI 研判闭环 → 工作台处置。',
   responsibilities: [
     {
-      title: '企业级 SOC 平台研发',
-      detail: '参与企业级安全运营中心 SOC 平台的前端及部分 Web 后端开发，负责告警可视化看板、事件详情、事件溯源、自动化响应工单、客户管理等核心模块，实现安全告警的集中展示、查询分析与运营处置。',
+      title: '用户管理与认证系统',
+      tag: '全栈',
+      detail: '独立完成从设计到实现的全栈闭环。设计规格+实施计划、用户 CRUD+登录认证（OTP 二次验证）、用户-客户多对多绑定、多角色权限模型。后端 ~4,800 行，前端 ~6,800 行。',
     },
     {
-      title: '告警数据链路建设',
-      detail: '参与多源安全告警接入与处理链路开发，支持 DS 通过 Syslog 接入，TrustOne、TDA、AI XDR 通过 Kafka 接入；配合 LogStash、KafkaStream 完成告警清洗、客户信息补全、范式化、白名单过滤与聚合处理，并将告警数据写入 OpenSearch 和 MySQL。',
+      title: '工作台 & 安全事件模块',
+      tag: '全栈',
+      detail: '投入最大的业务模块，覆盖告警到安全事件的端到端处置流程。工作台事件 API（列表/统计/筛选/排序）、状态模型多轮重构（pendingJudgement → ai_judgement 字段分离）、处置流程重构、通知编辑、OpenSearch 适配。后端 ~14,800 行，前端 ~10,800 行。',
     },
     {
-      title: 'AI 智能研判功能',
-      detail: '开发安全事件 AI 研判相关功能，对接外部 LLM 研判服务，实现安全事件读取、研判调用、结果回写和状态展示，辅助安全分析师完成告警初筛与事件分类，降低重复人工研判成本。',
+      title: 'AI 研判系统',
+      tag: '全栈',
+      detail: 'LLM 集成+异步任务编排。LLM 调用从事务中解耦、共享 HttpClient 连接池、从原始告警 payload 构建 alert_info 为 LLM 提供上下文、AI 研判与人工研判数据分离、提示词模板管理。后端 ~4,900 行，前端 ~2,000 行。',
     },
     {
-      title: '性能优化与稳定性提升',
-      detail: '优化安全告警、聚合告警、安全事件和工作台工单的列表查询与详情展示，使平台关键页面加载耗时降低约 35%，告警从生成到展示的平均延迟缩短至 1 秒以内，支撑安全运营团队 7×24 小时威胁监控与快速响应。',
+      title: 'AI 批量研判',
+      tag: '全栈',
+      detail: '项目中最复杂的独立功能，完整的设计→实现→审查闭环。异步线程池（并发度3）+ 内存状态机 + 逐事件错误隔离 + 原子计数 + 启动恢复钩子 + 租户隔离 + 事务后派发（TransactionSynchronizationManager）。审查修复覆盖异步边界、JPQL原子更新、N+1查询优化等。后端 14 提交 ~3,100 行，前端 12 提交 ~2,100 行。',
+    },
+    {
+      title: '七鱼群推送集成',
+      tag: '全栈',
+      detail: '安全事件通告通过七鱼 SDK 转发至企业微信群——外部系统集成。设计文档+实施计划+完整编码实现，前端群推送配置页+管理员权限过滤。后端 ~1,800 行，前端 ~340 行。',
+    },
+    {
+      title: '审计日志重构 + 双层导航架构',
+      tag: '全栈/前端',
+      detail: '审计日志 login-log → audit-log 全量重命名重构，服务迁移至 mgmt 模块。导航从单层侧栏重构为"顶部一级 + 侧栏二级"双层结构，TopNav + Sidebar 动态二级渲染，MDR 品牌化，i18n 配套更新。',
     },
   ],
-  harnessNote: '🛠 全程使用 Claude Code 进行 AI 辅助全栈开发（Vibecoding），通过 AGENTS.md、自定义 Linter 等 Harness 工程实践保障代码质量。累计独立提交 99+ 个、新增代码约 60,000 行。',
-};
-
-export const socProjectDetail = {
-  title: 'SOC 安全运营中心（项目深化）',
-  period: '2026.05 — 2026.07（6周）',
-  team: '3人团队 · 全栈开发',
-  backendLines: '~32,500',
-  frontendLines: '~27,400',
-  totalLines: '~59,900',
+  harnessEngineering: {
+    title: 'AI 辅助开发体系搭建（Harness 工程实践）',
+    description: '作为团队中推动 AI 辅助开发规范化的主要成员，搭建了完整的 Agent 知识库与开发流程体系。',
+    items: [
+      {
+        title: 'AGENTS.md 三层规范体系',
+        detail: '设计并维护分层加载的 Agent 规范架构：根 AGENTS.md（工作区边界、协作规则）、soc-backend/AGENTS.md（后端项目形态、验收要求）、soc-frontend/AGENTS.md（前端技术栈、按需加载细则）。',
+      },
+      {
+        title: '.agents/ 结构化知识库（20+ 规范文件）',
+        detail: '按领域组织的可复用开发规范。设计了 ROUTING.md 任务路由表定义 11 种任务原型及 Minimum 文件集+Optional 触发条件，按需加载避免上下文膨胀。涵盖语言规范、领域规范、流程规范、安全规范、契约规范五大类。',
+      },
+      {
+        title: 'SDD（Superpowers Driven Development）开发流程',
+        detail: '建立了 Spec → Self-Review → Plan → Implement → Code Review → Fixes 完整闭环。AI 批量研判功能完整跑通此闭环（后端 10 任务+前端 8 任务，30+ 次 review）。每轮提交后 Agent 代码审查生成 review diff，问题自动修复后 re-review 确认。',
+      },
+      {
+        title: '前端自定义 Agent Skill（3 个）',
+        detail: 'shadcn/ui Skill（组件使用规则+CLI命令+样式规范）、frontend-patterns Skill（React组件+数据加载+表单模式）、frontend-design-direction Skill（前端体验和视觉设计方向），提升 AI 生成代码一致性。',
+      },
+      {
+        title: '权限与安全管控',
+        detail: '结构化人工审核机制：pom.xml / package.json / SQL 迁移 / 环境变量 / auth/security 等高危变更需提交审核模板并等待人工确认。建立 Memory 记忆系统持久化项目特殊规则及常见错误为 Agent 长期记忆。',
+      },
+    ],
+  },
   modules: [
-    {
-      name: '用户管理与认证系统',
-      detail: '从设计到实现全栈完成：用户管理 CRUD、登录认证、用户-客户绑定与多角色权限。后端 ~4,800 行，前端 ~6,800 行。',
-    },
-    {
-      name: '审计日志重构',
-      detail: 'login-log → audit-log 全量重命名，customer + audit 服务迁移至 mgmt 模块。后端 ~2,100 行，前端 ~1,250 行。',
-    },
-    {
-      name: '双层导航架构重构',
-      detail: '纯前端架构级工作：单层侧栏 → 顶部一级 + 侧栏二级双层结构，路由重构，i18n 配套更新，品牌化设计。前端 ~1,300 行。',
-    },
-    {
-      name: '告警展示系统',
-      detail: '告警查询字段对齐、关键词/威胁对象搜索修复、告警详情抽屉多轮迭代、可配置威胁表覆盖范围、搜索 UX 优化。后端 ~400 行，前端 ~2,100 行。',
-    },
-    {
-      name: '安全事件 & 工作台',
-      detail: '投入最大的业务模块。工作台事件 API、状态模型重构、处置流程重构、通知编辑、OpenSearch 适配。后端 ~14,800 行，前端 ~10,800 行。',
-    },
-    {
-      name: 'AI 研判模块',
-      detail: 'LLM 调用移出事务 + 持久化短事务服务、共享 HttpClient、AI 研判与人工研判数据分离、提示词模板管理。后端 ~4,900 行，前端 ~2,000 行。',
-    },
-    {
-      name: 'AI 批量研判',
-      detail: '最复杂的独立功能。异步线程池 + 内存状态机 + 逐事件错误隔离 + 启动恢复钩子 + 租户隔离，前后端全栈，含设计文档→审查修复完整闭环。后端 ~3,100 行，前端 ~2,100 行。',
-    },
-    {
-      name: '七鱼群推送',
-      detail: '安全运营事件通告七鱼群推送——外部系统集成。后端 ~1,800 行，前端 ~340 行。',
-    },
+    { name: '用户管理 & 认证', backend: '~4,800', frontend: '~6,800', total: '~11,600' },
+    { name: '审计日志重构', backend: '~2,100', frontend: '~1,250', total: '~3,350' },
+    { name: '导航架构重构', backend: '—', frontend: '~1,300', total: '~1,300' },
+    { name: '告警展示', backend: '~400', frontend: '~2,100', total: '~2,500' },
+    { name: '安全事件 & 工作台', backend: '~14,800', frontend: '~10,800', total: '~25,600' },
+    { name: 'AI 研判模块', backend: '~4,900', frontend: '~2,000', total: '~6,900' },
+    { name: 'AI 批量研判', backend: '~3,100', frontend: '~2,100', total: '~5,200' },
+    { name: '七鱼群推送', backend: '~1,800', frontend: '~340', total: '~2,140' },
+    { name: '系统配置 & UI', backend: '~570', frontend: '~750', total: '~1,320' },
   ],
   techCoverage: [
-    { dimension: '后端框架', tech: 'Spring Boot、JPA/Hibernate、MySQL DDL' },
-    { dimension: '数据处理', tech: 'OpenSearch/Elasticsearch 查询优化、Kafka Streams' },
-    { dimension: 'AI 集成', tech: 'LLM 调用集成、异步线程池编排、批量任务状态机' },
-    { dimension: '前端框架', tech: 'React 18 + TypeScript、TanStack Query v5' },
-    { dimension: 'UI 组件', tech: 'shadcn/ui、Turbo monorepo' },
-    { dimension: '前端工程', tech: 'MSW Mock Server、i18n（zh-CN）、Vitest + RTL' },
-    { dimension: '工程实践', tech: '设计文档 → 自审修正 → 实现计划 → 编码 → 审查修复 完整闭环' },
+    { dimension: '后端', tech: 'Java 25、Spring Boot 4.0.6、Spring JPA/Hibernate、Maven 多模块、MySQL DDL' },
+    { dimension: '数据处理', tech: 'OpenSearch/Elasticsearch 查询优化、Kafka Streams 范式化上下文' },
+    { dimension: 'AI 集成', tech: 'LLM 调用集成（信立方）、异步线程池编排（@Async + ThreadPoolTaskExecutor）、批量任务内存状态机、事务后派发（TransactionSynchronizationManager）' },
+    { dimension: '前端框架', tech: 'React 18 + TypeScript、TanStack Query v5（mutation+轮询）、shadcn/ui 组件库、Turbo monorepo' },
+    { dimension: '前端工程', tech: 'MSW v2 Mock Server（固定 faker seed）、react-i18next 国际化、Vitest v4 + React Testing Library、react-hook-form + Zod' },
+    { dimension: '部署', tech: 'Docker Compose 本地环境、Helm + Kubernetes（火山引擎）' },
+    { dimension: '协作', tech: 'GitLab 代码托管、Agent 驱动代码审查（每轮提交后自动 review）' },
+  ],
+  learnings: [
+    '全栈闭环能力：从数据库 DDL 到前端 UI 交互，独立完成 9 个功能模块的完整链路',
+    '复杂异步系统设计：线程池配置、异步任务编排、事务边界处理、启动恢复、错误隔离等分布式系统关注点',
+    'AI 辅助工程化：不仅用 AI 写代码，还搭建了完整的 Agent 知识库、任务路由表和开发流程规范',
+    '代码审查意识：SDD 流程中养成了设计→实现→审查→修复的工作习惯，每个功能都经过多轮 review 验证后才合并',
   ],
 };
 
