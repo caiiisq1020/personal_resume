@@ -35,7 +35,7 @@ export default function Navbar() {
 
           {/* PDF 下载按钮 */}
           <a
-            href="/resume/张少聪-简历.pdf"
+            href="/resume/张少聪-秋招简历.pdf"
             download
             className="ml-2 font-mono text-xs text-green border border-green rounded px-3 py-1.5 hover:bg-green/10 transition-colors"
           >

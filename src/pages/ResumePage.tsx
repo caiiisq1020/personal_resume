@@ -10,7 +10,7 @@ export default function ResumePage() {
 
       <div className="text-center">
         <a
-          href="/resume/张少聪-简历.pdf"
+          href="/resume/张少聪-秋招简历.pdf"
           download
           className="inline-flex items-center gap-2 font-mono text-lg text-green border border-green rounded-sm px-10 py-5 hover:bg-green/10 transition-colors mb-8"
         >
