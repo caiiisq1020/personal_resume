@@ -52,6 +52,13 @@ export default function HomePage() {
                     </p>
                     <p className="text-slate">📱 {personalInfo.phone}</p>
                     <p className="text-slate">📍 {personalInfo.location}</p>
+                    <p className="text-slate">
+                      🐙{' '}
+                      <a href={personalInfo.github} target="_blank" rel="noopener noreferrer" className="text-green hover:underline">
+                        GitHub
+                      </a>
+                      <span className="text-slate/50"> — 项目代码均托管于此，欢迎浏览</span>
+                    </p>
                   </div>
                 )}
               </div>

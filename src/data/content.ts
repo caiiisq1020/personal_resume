@@ -8,6 +8,7 @@ export const personalInfo = {
   email: '18727967108@163.com',
   phone: '18727967108',
   location: '江苏南京',
+  github: 'https://github.com/caiiisq1020',
 };
 
 export const skillCategories = [
