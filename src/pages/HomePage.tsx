@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom';
 import { personalInfo, navLinks } from '../data/content';
 
 const terminalLines = [
-  { prompt: '$ whoami', output: `${personalInfo.name} — ${personalInfo.tagline}`, delay: '200ms' },
-  { prompt: '$ cat README.md', output: personalInfo.description, delay: '600ms' },
+  { prompt: '$ 关于我', output: `${personalInfo.name} — ${personalInfo.tagline}`, delay: '200ms' },
+  { prompt: '$ 个人简介', output: personalInfo.description, delay: '600ms' },
   {
-    prompt: '$ ls projects/',
+    prompt: '$ 项目列表',
     output: '智慧医疗  ·  知识问答  ·  有声读物  ·  Coze智能体  ·  组卷阅卷  ·  SOC',
     delay: '1000ms',
   },
-  { prompt: '$ contact --help', output: '', delay: '1400ms' },
+  { prompt: '$ 联系方式', output: '', delay: '1400ms' },
 ];
 
 export default function HomePage() {

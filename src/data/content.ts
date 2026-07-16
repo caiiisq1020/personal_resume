@@ -4,7 +4,7 @@ export const personalInfo = {
   name: '张少聪',
   subtitle: '我构建AI驱动的后端应用。',
   tagline: 'AI应用开发 / Java后端开发',
-  description: '硕士在读的全栈开发者，专注于AI应用开发与Java后端工程。具备从0到1构建高可用分布式系统的全栈能力，熟练运用Claude Code等AI工具进行高效开发。目前在南京，随时可到岗。',
+  description: '南京邮电大学电子信息专业硕士，专注于AI应用开发与Java后端工程，具备从0到1构建高可用分布式系统的全栈能力。持续探索Harness Engineering，熟练运用Claude Code/Codex等AI工具进行工程化实践，实现高效开发。目前在江苏南京，户籍湖北。',
   email: '18727967108@163.com',
   phone: '18727967108',
   location: '江苏南京',
