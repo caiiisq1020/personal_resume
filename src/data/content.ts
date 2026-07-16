@@ -67,9 +67,14 @@ export const internship = {
     'SOC（安全运营中心）为 TrustOne、TDA、DS、AIXDR 四类安全产品提供告警与安全事件的统一运维平台。核心链路：多源告警接入 → Kafka Streams 两阶段范式化+聚合 → OpenSearch 存储 → 安全事件规则引擎匹配 → AI 研判闭环 → 工作台处置。',
   responsibilities: [
     {
-      title: '用户管理与认证系统',
+      title: '用户管理、认证 & 客户管理',
       tag: '全栈',
-      detail: '独立完成从设计到实现的全栈闭环。设计规格+实施计划、用户 CRUD+登录认证（OTP 二次验证）、用户-客户多对多绑定、多角色权限模型。后端 ~4,800 行，前端 ~6,800 行。',
+      detail: '独立完成从设计到实现的全栈闭环。设计规格+实施计划、用户 CRUD+登录认证（OTP 二次验证）、客户信息管理、用户-客户多对多绑定、多角色权限模型。后端 ~4,800 行，前端 ~6,800 行。',
+    },
+    {
+      title: '告警展示',
+      tag: '全栈',
+      detail: '多源告警数据接入与前端可视化展示。Kafka Streams 消费告警数据接入 OpenSearch 存储与检索，前端告警列表/详情/筛选/统计面板，包括安全事件、聚合告警与安全告警。支撑安全事件溯源与分析。后端 ~400 行，前端 ~2,100 行。',
     },
     {
       title: '工作台 & 安全事件模块',
@@ -79,7 +84,7 @@ export const internship = {
     {
       title: 'AI 研判系统',
       tag: '全栈',
-      detail: 'LLM 集成+异步任务编排。LLM 调用从事务中解耦、共享 HttpClient 连接池、从原始告警 payload 构建 alert_info 为 LLM 提供上下文、AI 研判与人工研判数据分离、提示词模板管理。后端 ~4,900 行，前端 ~2,000 行。',
+      detail: 'LLM 集成+异步任务编排。LLM 调用从事务中解耦、共享 HttpClient 连接池、从原始告警 payload 构建 alert_info 为 LLM 提供上下文、AI 研判与人工研判数据分离、大模型配置与提示词模板管理。后端 ~4,900 行，前端 ~2,000 行。',
     },
     {
       title: 'AI 批量研判',
@@ -89,12 +94,17 @@ export const internship = {
     {
       title: '七鱼群推送集成',
       tag: '全栈',
-      detail: '安全事件通告通过七鱼 SDK 转发至企业微信群——外部系统集成。设计文档+实施计划+完整编码实现，前端群推送配置页+管理员权限过滤。后端 ~1,800 行，前端 ~340 行。',
+      detail: '安全事件通告通过七鱼 SDK 转发至企业微信群——外部系统集成。设计文档+实施计划+完整编码实现，通告推送配置与客户群ID绑定+管理员权限过滤。后端 ~1,800 行，前端 ~340 行。',
     },
     {
       title: '审计日志重构 + 双层导航架构',
       tag: '全栈/前端',
-      detail: '审计日志 login-log → audit-log 全量重命名重构，服务迁移至 mgmt 模块。导航从单层侧栏重构为"顶部一级 + 侧栏二级"双层结构，TopNav + Sidebar 动态二级渲染，MDR 品牌化，i18n 配套更新。',
+      detail: '审计日志 login-log → audit-log 全量重命名重构，服务迁移至 mgmt 模块，实现全平台操作可视化落库留档。导航从单层侧栏重构为"顶部一级 + 侧栏二级"双层结构，TopNav + Sidebar 动态二级渲染，MDR 品牌化，i18n 配套更新。',
+    },
+    {
+      title: '系统配置 & UI',
+      tag: '全栈/前端',
+      detail: '系统级配置管理页面与全局 UI 优化。包括大模型参数与提示词模板配置、网易七鱼通告配置、飞书运营人员通知配置。后端 ~570 行，前端 ~750 行。',
     },
   ],
   harnessEngineering: {
@@ -124,14 +134,13 @@ export const internship = {
     ],
   },
   modules: [
-    { name: '用户管理 & 认证', backend: '~4,800', frontend: '~6,800', total: '~11,600' },
-    { name: '审计日志重构', backend: '~2,100', frontend: '~1,250', total: '~3,350' },
-    { name: '导航架构重构', backend: '—', frontend: '~1,300', total: '~1,300' },
+    { name: '用户管理、认证 & 客户管理', backend: '~4,800', frontend: '~6,800', total: '~11,600' },
     { name: '告警展示', backend: '~400', frontend: '~2,100', total: '~2,500' },
     { name: '安全事件 & 工作台', backend: '~14,800', frontend: '~10,800', total: '~25,600' },
     { name: 'AI 研判模块', backend: '~4,900', frontend: '~2,000', total: '~6,900' },
     { name: 'AI 批量研判', backend: '~3,100', frontend: '~2,100', total: '~5,200' },
     { name: '七鱼群推送', backend: '~1,800', frontend: '~340', total: '~2,140' },
+    { name: '审计日志 & 导航重构', backend: '~2,100', frontend: '~2,550', total: '~4,650' },
     { name: '系统配置 & UI', backend: '~570', frontend: '~750', total: '~1,320' },
   ],
   techCoverage: [
@@ -144,7 +153,7 @@ export const internship = {
     { dimension: '协作', tech: 'GitLab 代码托管、Agent 驱动代码审查（每轮提交后自动 review）' },
   ],
   learnings: [
-    '全栈闭环能力：从数据库 DDL 到前端 UI 交互，独立完成 9 个功能模块的完整链路',
+    '全栈闭环能力：从数据库 DDL 到前端 UI 交互，独立完成 8 个功能模块的完整链路',
     '复杂异步系统设计：线程池配置、异步任务编排、事务边界处理、启动恢复、错误隔离等分布式系统关注点',
     'AI 辅助工程化：不仅用 AI 写代码，还搭建了完整的 Agent 知识库、任务路由表和开发流程规范',
     '代码审查意识：SDD 流程中养成了设计→实现→审查→修复的工作习惯，每个功能都经过多轮 review 验证后才合并',
